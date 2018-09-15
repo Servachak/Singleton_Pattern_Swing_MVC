@@ -24,4 +24,11 @@ public class Database {
         }
         return instanceNew;
     }
+
+    public void connect(){
+        System.out.println("Database connected");
+    }
+    public void disconnect(){
+        System.out.println("Disconnected");
+    }
 }

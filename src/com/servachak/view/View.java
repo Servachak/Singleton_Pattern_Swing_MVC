@@ -1,12 +1,15 @@
 package com.servachak.view;
 
 import com.servachak.controller.Controller;
+import com.servachak.model.Database;
 import com.servachak.model.Model;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class View extends JFrame {
 
@@ -111,6 +114,17 @@ public class View extends JFrame {
             }
         });
 
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+                Database.getInstance().connect();
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+                Database.getInstance().disconnect();
+            }
+        });
 
         gc.fill = GridBagConstraints.NONE;
         setSize(600,600);
